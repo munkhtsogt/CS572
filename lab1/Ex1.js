@@ -9,5 +9,5 @@ Musician.prototype.play = function(piece){
     console.log(this.name + " is now playing " + piece);
 }
 
-Violinist.play("Moon sonate");
-Pianist.play("La la land");
+Violinist.play("Moon Sonate");
+Pianist.play("La La Land");
