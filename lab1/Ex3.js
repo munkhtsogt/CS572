@@ -3,7 +3,8 @@ function isWeekend(){
     const day = todayDate.getDay();
 	dic = {
 		0: "weekend",
-		1: "weekend",
+		6: "weekend",
+		1: "weekday",
 		2: "weekday",
 		3: "weekday",
 		4: "weekday",
