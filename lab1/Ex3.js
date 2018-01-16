@@ -1,7 +1,15 @@
 function isWeekend(){
     const todayDate = new Date();
     const day = todayDate.getDay();
-    return ["weekend", "weekday"][day % 6]; 
+	dic = {
+		0: "weekend",
+		1: "weekend",
+		2: "weekday",
+		3: "weekday",
+		4: "weekday",
+		5: "weekday",
+	}
+    return dic[day];
 }
 
 console.log(isWeekend());
