@@ -1,0 +1,25 @@
+1. When do we use those 2 functions?
+setImmediate(): It executes it's callback immediately after I/O events callbacks.
+setTimeout(): It doesn't execute it's callback immediately. It will executed after specific delay.  
+If setTimeout's delay is 0 and it is queued before setImmediate then setTimeout will executed before setImmediate.
+On the other hand setImmediate will always executed before setTimeout.
+
+2. Difference?
+process.nextTick(): It fires immediately on the same phase.
+setImmediate(): It fires on the following iteration or 'tick' of the event.
+process.nextTick() & setImmediate are similar to each other. However process.nextTick fires more immediately 
+than setImmediate. In general setImmediate is more recommended to developers.
+
+3. 10 modules of Node.js
+v8
+Map
+http2
+stream
+Int16Array
+global
+readline
+crypto
+vm
+util
+
+
