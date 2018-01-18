@@ -1,3 +1,4 @@
+"use strict";
 const tree = { 
 	name : "home", 
 	files : ["notes.txt","todo.txt"], 

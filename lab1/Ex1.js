@@ -2,7 +2,7 @@ function Musician(name){
     this.name = name;
 }
 
-var Violinist = new Musician("Asaad");
+let Violinist = new Musician("Asaad");
 let Pianist = new Musician("Munkhtsogt");
 
 Musician.prototype.play = function(piece){
