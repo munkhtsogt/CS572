@@ -1,6 +1,7 @@
+'use strict';
 const Rx = require('@reactivex/rxjs');
 const os = require('os');
-let cpus = os.cpus().length, mem = os.totalmem/1e9;
+let cpus = os.cpus().length, mem = os.totalmem()/1e9;
 
 // Normal
 function checkSystem(){
