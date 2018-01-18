@@ -3,7 +3,7 @@ let http = require("http");
 let fs = require("fs");
 let server = http.createServer();
 server.on('request', function(req, res){
-    let path = __dirname + "\\bigben.jpg"
+    let path = __dirname + "/bigben.jpg"
     // fs.readFile(path, function(err, data){
     //     if(err) {
     //         console.error(err);
