@@ -18,4 +18,4 @@ Rx.Observable.create(ob => {
     if(mem < 4) ob.next('This app needs at least 4GB of RAM');
     if(cpus < 2) ob.next('Processor is not supported');
     if(cpus >= 2 && mem >= 4) ob.next('System is checked successfully.');
-}).subscribe(v => console.log(v));
+}).subscribe(v => console.log(v)).unsubscribe();
