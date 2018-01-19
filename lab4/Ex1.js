@@ -5,10 +5,10 @@ const URL = require('url');
 const cp = require('child_process');
 
 function parseURL(e){
-    const url = URL.parse(e.req.url);
+    const url = URL.parse(e.req.url, true);
     const query = url['query'];
-    if(query){
-        const fname = query.substring(4, query.length);
+    if(Object.keys(query).length != 0){
+        const fname = query['url'];
         const p = cp.fork('child_process.js');
         p.send(fname);
         p.on('message', function(data){
@@ -17,6 +17,9 @@ function parseURL(e){
                 e.res.write(data.data);
             }
         });
+    }
+    else {
+    	e.res.end('http://localhost:4000?url=file.txt');
     }
 }
 
