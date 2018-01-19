@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Lab5</title>
+    </head>
+    <body>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Username
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    <th>
+                        Zip code
+                    </th>
+                    <th>
+                        Latitude
+                    </th>
+                    <th>
+                        Longitude
+                    </th>
+                    <th>
+                        Website
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users  %}
+                <tr>
+                    <td>
+                        {{ user.id }}
+                    </td>
+                    <td>
+                        {{ user.name }}
+                    </td>
+                    <td>
+                        {{ user.username }}
+                    </td>
+                    <td>
+                        {{ user.email }}
+                    </td>
+                    <td>
+                        {{ user.address.city }}
+                    </td>
+                    <td>
+                        {{ user.address.zipcode }}
+                    </td>
+                    <td>
+                        {{ user.address.geo.lat }}
+                    </td>
+                    <td>
+                        {{ user.address.geo.lng }}
+                    </td>
+                    <td>
+                        {{ user.website }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
