@@ -13,31 +13,33 @@ app.enable('case sensitive routing');
 app.set('strict routing', true);
 app.set('x-powered-by', false);
 app.enable('view cache');
+let url = 'http://jsonplaceholder.typicode.com/users/';
 // HOME
 app.get('/', (req, res) => {
     res.render('index');
 });
 // USERS
 app.get('/users', (req, res) => {
-    let url = 'http://jsonplaceholder.typicode.com/users/';
     /* PROMISE */
-    // fetch(url).then(function(data) {
-    //     return data.json();
-    // }).then(function(users) {
-    //     res.render('users', { users: users });
-    // });
-
+    fetch(url).then(function(data) {
+        return data.json();
+    }).then(function(users) {
+        res.render('users', { users: users, method: 'PROMISE' });
+    });
+});
+app.get('/users/observable', (req, res) => {
     /* OBSERVABLE */
-    // Rx.Observable.from(fetch(url).then(data => data.json()).then(users => {
-    //     res.render('users', { users: users });
-    // }));
-    
+    Rx.Observable.from(fetch(url).then(data => data.json()).then(users => {
+        res.render('users', { users: users, method: 'OBSERVABLE' });
+    }));
+});
+app.get('/users/async', (req, res) => {
     /* ASYNC/WAIT */
     const fetcher = async url => {
         try {
             const response = await fetch(url);
             const users = await response.json();
-            res.render('users', { users: users });
+            res.render('users', { users: users, method: 'ASYNC' });
         }
         catch(err) {
             console.error(err);
