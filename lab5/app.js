@@ -1,5 +1,4 @@
 const Rx = require('@reactivex/rxjs');
-// const subject = new Rx.Subject();
 const express = require('express');
 const fetch = require('node-fetch');
 const engine = require('consolidate');
@@ -13,28 +12,28 @@ app.enable('case sensitive routing');
 app.set('strict routing', true);
 app.set('x-powered-by', false);
 app.enable('view cache');
+// URL
 let url = 'http://jsonplaceholder.typicode.com/users/';
 // HOME
 app.get('/', (req, res) => {
     res.render('index');
 });
-// USERS
+/* PROMISE */
 app.get('/users', (req, res) => {
-    /* PROMISE */
     fetch(url).then(function(data) {
         return data.json();
     }).then(function(users) {
         res.render('users', { users: users, method: 'PROMISE' });
     });
-});
+}); 
+/* OBSERVABLE */
 app.get('/users/observable', (req, res) => {
-    /* OBSERVABLE */
     Rx.Observable.from(fetch(url).then(data => data.json()).then(users => {
         res.render('users', { users: users, method: 'OBSERVABLE' });
     }));
 });
+/* ASYNC/WAIT */
 app.get('/users/async', (req, res) => {
-    /* ASYNC/WAIT */
     const fetcher = async url => {
         try {
             const response = await fetch(url);
