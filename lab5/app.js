@@ -38,7 +38,7 @@ app.get('/users/async', (req, res) => {
         try {
             const response = await fetch(url);
             const users = await response.json();
-            res.render('users', { users: users, method: 'ASYNC' });
+            res.render('users', { users: users, method: 'ASYNC/WAIT' });
         }
         catch(err) {
             console.error(err);
