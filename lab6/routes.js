@@ -1,15 +1,17 @@
 const express = require('express');
-const logger = require('morgan');
+const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const validator = require('express-validator');
 const router = express.Router();
 const app = express();
-// Parse application/x-www-form-urlencoded
+// PARSE application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
-// Parse application/json
+// PARSE application/json
 app.use(bodyParser.json());
+// VALIDATOR
 app.use(validator());
-app.use(logger('combined'));
+// LOGGER
+app.use(morgan('combined'));
 const grades = [{id: 1, name: 'Asaad Saad', course: 'CS572', grade: 95},
                 {id: 2, name: 'Munkhtsogt Tsogbadrakh', course: 'CS572', grade: 94},
                 {id: 3, name: 'Brad Pitt', course: 'CS572', grade: 93},
