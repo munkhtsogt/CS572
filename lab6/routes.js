@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Parse application/json
 app.use(bodyParser.json());
 app.use(validator());
+app.use(logger('combined'));
 const grades = [{id: 1, name: 'Asaad Saad', course: 'CS572', grade: 95},
                 {id: 2, name: 'Munkhtsogt Tsogbadrakh', course: 'CS572', grade: 94},
                 {id: 3, name: 'Brad Pitt', course: 'CS572', grade: 93},
