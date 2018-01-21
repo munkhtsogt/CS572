@@ -3,8 +3,8 @@ const router = express.Router();
 
 const grades = [{id: 1, name: 'Asaad Saad', course: 'CS572', grade: 95},
                 {id: 2, name: 'Munkhtsogt Tsogbadrakh', course: 'CS572', grade: 94},
-                {id: 3, name: 'Brad Pitt', course: 'CS572', grade: 93},
-                {id: 4, name: 'Tom Cruise', course: 'CS572', grade: 92}];
+                {id: 3, name: 'John Mccord', course: 'CS572', grade: 93},
+                {id: 4, name: 'Tom Smith', course: 'CS572', grade: 92}];
 // ACCEPT CROSS DOMAIN XHR REQUEST
 router.all('*', (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
