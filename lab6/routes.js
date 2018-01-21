@@ -28,13 +28,13 @@ router.post('/grades', (req, res) => {
         grade: req.body.grade,
     };
     grades.push(grade);
-    res.send(JSON.stringify(grade));
+    res.send(grade);
 });
 // READ
 router.get('/grades/:id', (req, res) => {
     const i = grades.findIndex(grade => grade.id == req.params.id);
-    if(i == -1) res.send('Grade not exist');
-    res.send(JSON.stringify(grades[i]));
+    if(i == -1) res.send({ 'message': 'grade not exists' });
+    res.send(grades[i]);
 });
 // UPDATE
 router.put('/grades/:id', (req, res) => {
@@ -42,22 +42,22 @@ router.put('/grades/:id', (req, res) => {
     req.checkBody("course", "Course is required").notEmpty();
     req.checkBody("grade", "A valid grade is required").notEmpty().isNumeric();
     const i = grades.findIndex(grade => grade.id == req.params.id);
-    if(i == -1) res.send('Grade not exist');
+    if(i == -1) res.send({ 'message': 'grade not exists' });
     grades[i].name = req.body.name;
     grades[i].course = req.body.course;
     grades[i].grade = req.body.grade;
-    res.send(JSON.stringify(grades[i]));
+    res.send(grades[i]);
 });
 // DELETE
 router.delete('/grades/:id', (req, res) => {
     const i = grades.findIndex(grade => grade.id == req.params.id);
-    if(i == -1) res.send('Grade not exist');
+    if(i == -1) res.send({ 'message': 'grade not exists' });
     grades.splice(i, 1);
-    res.status(200).send('SUCCESSFULLY DELETED');
+    res.send({ 'message': 'successfully added' });
 });
 // ALL LIST
 router.get('/grades', (req, res) => {
-    res.send(JSON.stringify(grades));
+    res.send(grades);
 });
 
 module.exports = router;
