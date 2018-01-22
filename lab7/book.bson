@@ -1,0 +1,11 @@
+{
+    _id: ObjectId(""),
+    isbn: "978-1-449-38156-1",
+    author: ["Kristina Chodorow", "Michael Dirolf"],
+    title: "MongoDB",
+    keywords: ["mongodb", "nosql", "amazon"],
+    is_borrowed: true,
+    student: "986131", 
+    checked_date: new Date(),
+    return_date: new Date(),
+}
