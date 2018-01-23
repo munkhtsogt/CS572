@@ -9,7 +9,7 @@
 9. db.restaurants.find({
         'address.coord.0': {$lt: -65.754168}, 
         'cuisine': {$ne: 'American'}, 
-        'grades.score': {$gte: 70}
+        'grades.score': {$gt: 70}
     });
 10. db.restaurants.find(
         {'name': { $regex: '^Wil' }}, 
