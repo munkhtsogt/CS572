@@ -1,0 +1,96 @@
+1. db.zips.aggregate([
+        {
+            $match: {'state': 'IA'}
+        },
+        {
+            $project: {
+                '_id': 0,
+                'zipcode': '$_id'
+            }
+        }
+    ]);
+
+2. db.zips.aggregate([
+        {
+            $match: {'pop': { $lt: 1000 }}
+        },
+        {
+            $project: {
+                '_id': 0,
+                'zipcode': '$_id'
+            }
+        }
+    ]);
+
+3. db.zips.aggregate([
+        {
+            $group: {
+                '_id': {'city': '$city', 'state': '$state'},
+                'count': {$sum: 1},
+            }    
+        },
+        {
+            $project: {
+                _id: 0,
+                'city': '$_id.city',
+                'state': '$_id.state',
+                'count': '$count',
+            }
+        },
+        {
+            $match: {
+                'count': {$gt: 1},
+            }
+        },
+        {$sort: {state: 1, city: 1}}
+    ]); 
+
+  4. db.zips.aggregate([
+        {
+            $group: {
+                '_id': {'city': '$city', 'state': '$state'},
+                'pop': {$sum: '$pop'}
+            }
+        },
+        {
+            $project: {
+                _id: 0,
+                'city': '$_id.city',
+                'state': '$_id.state',
+                'pop': '$pop',
+            }
+        },
+        {
+            $group: {
+                '_id': '$state',
+                'pop': {$min: '$pop'},
+            }
+        },
+        {
+            $project: {
+                _id: 0,
+                'state': '$_id',
+                'pop': '$pop',
+            }
+        },
+        {
+            $sort: { 'state': 1 }
+        }
+    ]);     
+
+4.2 db.zips.aggregate([
+        {
+            $group: {
+                '_id': {'city': '$city', 'state': '$state'},
+                'pop': {$sum: '$pop'}
+            }
+        },
+        {$sort: { 'pop': 1 }},
+        {
+            $group: {
+                '_id': '$state',
+                'pop': {$min: '$pop'},
+                'city': {$first: '$city'}
+            }
+        }
+    ]); 
