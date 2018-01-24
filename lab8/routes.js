@@ -3,6 +3,11 @@ const mongo = require('mongoskin');
 const router = express.Router();
 const db = mongo.db('mongodb://localhost:27017/cs572', {native_parser: true});
 let ObjectId = require('mongodb').ObjectID;
+router.get('*', (req, res, next) => {
+    // INDEXING
+    db.collection('homework8').createIndex({'location': '2d'});
+    next();
+});
 // LIST
 router.get('/locations', (req, res, next) => {
     db.collection('homework8').find().toArray((err, results) => {
@@ -28,8 +33,6 @@ router.post('/locations', (req, res, next) => {
     };
     db.collection('homework8').insert(location, (err, item) => {
         if(err) throw err;
-        // INDEXING
-        db.collection('homework8').createIndex({'location': '2d'});
         res.send(item);
         return db.close();
     });
@@ -63,8 +66,6 @@ router.put('/locations/:id', (req, res, next) => {
     let options = {'new': true};
     db.collection('homework8').findAndModify(query, sort, operator, options, (err, item) => {
         if(err) throw err;
-        // INDEXING
-        db.collection('homework8').createIndex({'location': '2d'});
         res.send(item);
         return db.close();
     });
