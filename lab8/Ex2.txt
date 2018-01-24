@@ -1,0 +1,24 @@
+{
+    _id: ObjectId(""),
+    isbn: "978-1-449-38156-1",
+    author: ["Kristina Chodorow", "Michael Dirolf"],
+    title: "MongoDB",
+    keywords: ["mongodb", "nosql", "amazon"],
+    is_borrowed: true,
+    student: "986131", 
+    checked_date: new Date(),
+    return_date: new Date(),
+}
+We can use couple of strategies according to our search. Our search will mainly depend 
+following fields - isbn, author and keywords. 
+Therefore we can create indexes on those 3 fields,
+
+1. We can create unique index on field isbn
+   db.book.createIndex({ isbn: 1 }, {unique: true});
+
+2. We can add multi indexing either author or keywords. We can't add both author and keywords
+   because I am assuming author field is list. There can be couple of authors in single book.
+   db.book.createIndex({ author: 1 }) OR db.book.createIndex({ keywords: 1 })
+
+3. My best strategy: Multi indexing on isbn and keywords. We can assume keywords can contains author name.
+   db.book.createIndex({ isbn: 1, keywords: 1 })
