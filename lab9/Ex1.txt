@@ -45,7 +45,7 @@
         {$sort: {state: 1, city: 1}}
     ]); 
 
-  4. db.zips.aggregate([
+4. db.zips.aggregate([
         {
             $group: {
                 '_id': {'city': '$city', 'state': '$state'},
@@ -77,8 +77,8 @@
             $sort: { 'state': 1 }
         }
     ]);     
-
-4.2 db.zips.aggregate([
+# OTHER VERSION WITH CITY NAME
+4. db.zips.aggregate([
         {
             $group: {
                 '_id': {'city': '$city', 'state': '$state'},
@@ -88,9 +88,18 @@
         {$sort: { 'pop': 1 }},
         {
             $group: {
-                '_id': '$state',
+                '_id': '$_id.state',
                 'pop': {$min: '$pop'},
-                'city': {$first: '$city'}
+                'city': {$first: '$_id.city'}
             }
-        }
+        },
+        {
+            $project: {
+                _id: 0,
+                'state': '$_id',
+                'city': '$city',
+                'pop': '$pop',
+            }
+        },
+        {$sort: { 'state': 1 }},
     ]); 
