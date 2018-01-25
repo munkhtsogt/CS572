@@ -21,7 +21,7 @@ router.post('/locations', (req, res, next) => {
     req.checkBody("name", "Name is required").notEmpty();
     req.checkBody("category", "Category is required").notEmpty();
     req.checkBody("longitude", "A valid longitude is required").notEmpty().isFloat();
-    req.checkBody("latitude", "A valid longitude is required").notEmpty().isFloat();
+    req.checkBody("latitude", "A valid latitude is required").notEmpty().isFloat();
     if (req.validationErrors()) {
         res.send(req.validationErrors());
         return;
@@ -51,7 +51,7 @@ router.put('/locations/:id', (req, res, next) => {
     req.checkBody("name", "Name is required").notEmpty();
     req.checkBody("category", "Category is required").notEmpty();
     req.checkBody("longitude", "A valid longitude is required").notEmpty().isFloat();
-    req.checkBody("latitude", "A valid longitude is required").notEmpty().isFloat();
+    req.checkBody("latitude", "A valid latitude is required").notEmpty().isFloat();
     if (req.validationErrors()) {
         res.send(req.validationErrors());
         return;
