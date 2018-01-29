@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  cnt: number = 5;
+  cntr: number = 5;
   componentCounterValue(event){
-    this.cnt = event;
+    this.cntr = event;
   }
 }

@@ -11,12 +11,11 @@ export class CounterComponent implements OnInit {
   @Output() counterChange: EventEmitter<number>;
   counterValue: number;
   constructor() {
-    this.counterValue = 0;
     this.counterChange  = new EventEmitter<number>();
   }
 
   ngOnInit() {
-    this.counterValue = this.counter;
+    this.counterValue = this.counter || 0;
   }
 
   decrease(){
