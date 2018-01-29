@@ -27,7 +27,7 @@
             $group: {
                 '_id': {'city': '$city', 'state': '$state'},
                 'count': {$sum: 1},
-            }    
+            }  
         },
         {
             $project: {
