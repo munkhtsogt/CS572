@@ -61,6 +61,5 @@ typings/
 .next
 
 # MY OWN
-.vscode/
 Thumbs.db
 package-lock.json
