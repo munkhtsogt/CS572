@@ -5,10 +5,8 @@ import { Directive, ElementRef, Renderer2 } from '@angular/core';
 })
 export class UpperDirective {
 
-  constructor(private element: ElementRef, 
-              private renderer2: Renderer2) { 
-                
-                renderer2.setStyle(element.nativeElement, 'text-transform', 'uppercase');
-            }
+  constructor(private element: ElementRef, private renderer2: Renderer2) { 
+    renderer2.setStyle(element.nativeElement, 'text-transform', 'uppercase');
+  }
 
 }
