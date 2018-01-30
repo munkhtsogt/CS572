@@ -8,9 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
   items:[string] = ["click", "on", "me", "and", "see", 'the', 'magic'];
-  color: string = '';
-  directiveColorChange(event){
-    console.log(event);
-    this.color = event;
-  }
 }
