@@ -1,0 +1,7 @@
+<ul upper [myvisibility]="true">
+    <li *ngFor="let name of names; let num = index" mycolor (colorChange)="directiveColorChange($event)">
+        {{ name }}
+    </li>
+</ul>
+
+<p [ngStyle]="{'background-color': color, 'color': 'white', 'width': '30%'}">Selected color: {{ color }}</p>
