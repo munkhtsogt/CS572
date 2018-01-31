@@ -10,6 +10,7 @@ import { DbService } from './db.service';
 import { ProfileComponent } from './profile/profile.component';
 import { MyGuard } from './my.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UpperDirective } from './upper.directive';
 
 const ROUTES: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -26,7 +27,8 @@ const ROUTES: Routes = [
     StudentsComponent,
     HomeComponent,
     ProfileComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    UpperDirective
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(ROUTES)
