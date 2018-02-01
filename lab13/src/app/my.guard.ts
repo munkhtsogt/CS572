@@ -14,7 +14,7 @@ export class MyGuard implements CanActivate {
     let url = state.url.split("/"); 
     let index = this.dbService.getData().findIndex(s => s._id == +url[url.length - 1]);
     if(index == -1) {
-      this.router.navigate(['/pageNotFound']);
+      this.router.navigate(['pageNotFound']);
       return false;
     }
     return true;
