@@ -29,9 +29,9 @@ export class DataDrivenComponent implements OnInit {
   }
 
   getData(): void {
-    this.http.get('http://jsonplaceholder.typicode.com/users/1')
+    this.http.get('https://jsonplaceholder.typicode.com/users/1')
                  .subscribe(user => {
-                  this.http.get('http://jsonplaceholder.typicode.com/posts?id=' + user['id']).subscribe(posts =>{
+                  this.http.get('https://jsonplaceholder.typicode.com/posts?id=' + user['id']).subscribe(posts =>{
                     this.myForm.setValue({ name: user['name'], email: user['email'], post: posts[0]['body'] })
                   });
                  });
