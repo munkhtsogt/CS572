@@ -1,0 +1,37 @@
+label, span, input, textarea {
+    display: block;
+}
+
+span {
+    color: red;
+}
+
+button, input, textarea {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: rgb(106, 106, 209);
+    color: #fff;
+    padding: 6px;
+}
+
+button:disabled {
+    background-color: rgb(138, 138, 192);
+}
+
+input {
+    height: 24px;
+}
+
+textarea {
+    padding-top: 6px;
+}
+
+input, textarea {
+    width: 200px;
+    padding-left: 6px;
+}

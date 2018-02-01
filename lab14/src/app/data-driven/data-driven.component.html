@@ -1,0 +1,21 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <p>
+    <label>Name</label>
+    <input type="text" name="name" [formControl]="myForm.controls['name']">
+    <span *ngIf="!myForm.controls['name'].valid">Required</span>
+  </p>
+  <p>
+    <label>Email</label>
+    <input type="text" name="email" [formControl]="myForm.controls['email']">
+    <span *ngIf="!myForm.controls['email'].valid">Required</span>
+  </p>
+  <p>
+    <label>Post</label>
+    <textarea name="post" [formControl]="myForm.controls['post']" rows="8"></textarea>
+    <span *ngIf="myForm.controls['post'].hasError('invalid')">Minimum length 10</span>
+  </p>
+  <p>
+    <button type="submit" [disabled]="!myForm.valid">Submit</button>
+    <button type="button" (click)="getData()">Get Data</button>
+  </p>
+</form>
