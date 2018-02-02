@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { DataDrivenComponent } from './data-driven/data-driven.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ThankYouComponent } from './thank-you/thank-you.component';
+import { HttpService } from './http.service';
 
 const ROUTES: Routes = [
   {path: '', component: DataDrivenComponent},
@@ -26,7 +27,7 @@ const ROUTES: Routes = [
     HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

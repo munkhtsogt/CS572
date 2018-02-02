@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms/src/model';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { HttpService } from '../http.service';
 @Component({
   selector: 'app-data-driven',
   templateUrl: './data-driven.component.html',
@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
 export class DataDrivenComponent implements OnInit {
 
   myForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router) { 
+  constructor(private formBuilder: FormBuilder, 
+              private httpService: HttpService, 
+              private router: Router) { 
     this.myForm = formBuilder.group({
       'name': ['', Validators.required],
       'email': ['', Validators.compose([Validators.required, Validators.email])],
@@ -29,12 +31,9 @@ export class DataDrivenComponent implements OnInit {
   }
 
   getData(): void {
-    this.http.get('https://jsonplaceholder.typicode.com/users/1')
-                 .subscribe(user => {
-                  this.http.get('https://jsonplaceholder.typicode.com/posts?id=' + user['id']).subscribe(posts =>{
-                    this.myForm.setValue({ name: user['name'], email: user['email'], post: posts[0]['body'] })
-                  });
-                 });
+    Promise.all(this.httpService.getPromises()).then(([user, posts])=>{
+      this.myForm.setValue({ name: user['name'], email: user['email'], post: posts[0]['body'] })
+    }).catch(err => console.log(err));
   }
   
   postValidator(control: FormControl): {[s: string]:boolean} {
