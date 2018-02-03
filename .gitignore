@@ -64,3 +64,5 @@ typings/
 .vscode/
 Thumbs.db
 package-lock.json
+/chaton-frontend
+/chaton-backend
